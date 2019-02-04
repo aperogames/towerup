@@ -562,8 +562,10 @@ MonoBehaviour:
   m_globalDifficultyMax: 0.5
   m_goldStreakCount: 5
   m_stepsBetweenGoldStreak: 20
-  m_chanceForSoloGold: 1
+  m_chanceForSoloGold: 0.3
   m_maxHeightForGold: 3
+  m_stepsForGoldHeightReset: 3
+  m_stepsForGoldHeightRise: 5
 --- !u!1 &1579959474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1155233665007584, guid: 0aaeab03b0ea87a44a625a773ba0b0a7,

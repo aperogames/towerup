@@ -86,11 +86,12 @@ public class ObstacleGenerator : MonoBehaviour {
 		}
 
 		// SubSteps for coins
+		float lastHeight = 0.0f;
 		for ( int i = 0; i < m_obstacleStreakSize - 1; i++ ) {
 			for ( int subStep = 0; subStep < _steps; ++subStep ) {
 				int stepsToGo = _steps - subStep;
 
-				float fraction = Mathf.Sin( subStep / (float)m_stepsForGoldHeightReset * Mathf.PI / 2.0f );
+				float fraction = Mathf.Min( 1.0f, Mathf.Sin( subStep / (float)m_stepsForGoldHeightReset * Mathf.PI / 2.0f ) );
 
 				float targetHeight = 0.0f;
 				if ( stepsToGo <= m_stepsForGoldHeightRise ) {
@@ -98,9 +99,8 @@ public class ObstacleGenerator : MonoBehaviour {
 					fraction = Mathf.Sin( ( 1.0f - ( stepsToGo / (float)m_stepsForGoldHeightRise ) ) * Mathf.PI / 2.0f );
 				}
 
-				float interpolatedHeight = heightOffsetPerObstacle[ i ];
-				float diff = targetHeight - heightOffsetPerObstacle[i];
-				interpolatedHeight = interpolatedHeight + diff * fraction;
+				float diff = targetHeight - lastHeight;
+				float interpolatedHeight = lastHeight + diff * fraction;
 				bool needCoin = Random.Range( 0.0f, 1.0f ) <= m_chanceForSoloGold;
 				if ( needCoin ) {
 					float pct = 0.0f;
@@ -109,6 +109,7 @@ public class ObstacleGenerator : MonoBehaviour {
 
 					Instantiate( m_goldPrefab, position, Quaternion.identity );
 				}
+				lastHeight = interpolatedHeight;
 
 				distance += m_stepDistance;
 			}
