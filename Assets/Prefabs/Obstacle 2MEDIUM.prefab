@@ -8813,7 +8813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47d91f34cc239f4fa3ebba8216aa993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_destructionFx: {fileID: 0}
+  m_destructionFx: {fileID: 8295317508800189108, guid: c4d1f4ba6787e15489776589351e88fb,
+    type: 3}
   m_canBeJumpedOn: 1
 --- !u!64 &37225490245830921
 MeshCollider:
